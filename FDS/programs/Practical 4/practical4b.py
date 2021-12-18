@@ -77,10 +77,26 @@ def getFibonacciSeries(arrLen):
         second = nxt
         nxt = first + second
         series.append(nxt)
-    print(series)
+    return series
 
 def fibonacciSearch(ele):
-    pass
+    studLen = len(students)
+    series = getFibonacciSeries(studLen)
+    k = len(series)-1
+    ofs = -1
+    while k > 0:
+        i = min(ofs + series[k-2], studLen-1)
+        if ele == students[i]:
+            printMsg("Element found at location " + str(i), "SUCCESS")
+            return
+        elif ele > students[i]:
+            ofs = i
+            k -= 1
+        else:
+            k -= 1
+    printMsg("Element Not Found", "ERROR")
+    return
+
 
 getStudents()
 while not isExit:
@@ -93,7 +109,7 @@ while not isExit:
     elif choice == 2:
         rollNo = int(input("Enter Roll no to search:"))
         # sentinalLinearSearch(rollNo)
-        getFibonacciSeries(7)
+        fibonacciSearch(rollNo)
     elif choice == 3:
         getStudents()
     elif choice == 4:
