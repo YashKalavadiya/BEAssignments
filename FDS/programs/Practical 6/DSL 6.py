@@ -35,7 +35,7 @@ while repeatAgain:
   
   print("\nEntered list :",percentage)
 
-  n=noOfStudents-1;
+  n=noOfStudents-1
 	
   percentageOperation(0,n)
   
