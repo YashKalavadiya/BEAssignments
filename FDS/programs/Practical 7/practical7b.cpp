@@ -8,6 +8,9 @@ struct Node {
 
 struct Node *head = NULL;
 
+class LinkedListManager {
+    public:
+
 void printMenu() {
     cout<<"\n=========================";
     cout<<"\nMENU"<<endl;
@@ -138,8 +141,8 @@ void addTwoElements(int first, int second) {
 
 }
 
-int main() {
-    int n;
+void execute() {
+        int n;
     bool isExit = false;
     cout<<"Enter No of elements you want: ";
     cin>>n;
@@ -182,5 +185,11 @@ int main() {
             break;
         }
     }
+}
+};
+
+int main() {
+    LinkedListManager lm;
+    lm.execute();
     return 0;
 }
