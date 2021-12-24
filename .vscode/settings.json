@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "*.json": "bat",
-    "iosfwd": "cpp"
+    "iosfwd": "cpp",
+    "utility": "cpp"
   }
 }

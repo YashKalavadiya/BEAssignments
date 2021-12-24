@@ -16,6 +16,4 @@ int main()
 		cout<<"Value of iterator:"<<*it<<endl;
 		it++;
 	}
-		
 }
-

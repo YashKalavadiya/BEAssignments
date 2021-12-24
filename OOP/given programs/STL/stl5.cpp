@@ -32,6 +32,5 @@ int main()
 		cout<<"Name:"<<(*it).name<<endl;
 		it++;
 	}
-		
 }
 
