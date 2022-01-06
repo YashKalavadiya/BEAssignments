@@ -1,5 +1,5 @@
 #include<iostream>
-#include<conio>
+// #include<conio>
 #define MAX 10
 using namespace std;
 int data[MAX],rear, front;

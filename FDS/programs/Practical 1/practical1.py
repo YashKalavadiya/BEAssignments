@@ -53,7 +53,7 @@ for ele in football:
 print("Students who play only football and not any other game: ", onlyFootball)
 
 for ele in allstuds:
-    if (ele in cricket or ele in football) and ele not in badminton:
+    if (ele in cricket and ele in football) and ele not in badminton:
         crickNFootButNoMinton.append(ele)
 
 print("Cricket and football but no badminton: ", crickNFootButNoMinton)

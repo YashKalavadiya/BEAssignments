@@ -51,12 +51,12 @@ def checkPalindrome(sentence):
         return True
 
 def indexOfFirstApperance(sentence, substring):
-    # arr = sentence.split(" ")
-    # for ele in arr:
-    #     if ele == substring:
-    #         return arr.index(ele)
-    # return -1
-    return sentence.find(substring)
+    arr = sentence.split(" ")
+    for ele in arr:
+        if ele == substring:
+            return arr.index(ele)
+    return -1
+    # return sentence.find(substring)
 
 def countOccurance(sentence, word):
     arr = sentence.split(" ")
@@ -94,3 +94,4 @@ while(not isEnd):
     else:
         print("Invalid Option!!!!!")
 
+    

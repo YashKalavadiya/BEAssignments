@@ -99,14 +99,14 @@ void Stack::checkParenthesis()
 int main()
 {
 
-	int choice;
+	char choice;
 	do
 	{
 		Stack s;
 		s.checkParenthesis();
 		cout<<"\nDO you want to continue?{y/n)";
 		cin>>choice;
-	}while(choice!=n);
+	}while(choice!='n');
 
 	return 0;
 }

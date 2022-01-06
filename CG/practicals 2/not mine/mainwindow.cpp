@@ -122,19 +122,19 @@ void Fill::ScanLineFill(Ui::MainWindow *ui)         //function for scanlinefill
                         }
                     }
 
-                    // Code for bubble sort
-//                    for(j=0;j<k-1;j++)
-//                    {
-//                        for(i=0;i<k-j-1;i++)
-//                        {
-//                            if(xi[i]>xi[i+1])
-//                            {
-//                                temp = xi[i];
-//                                xi[i] = xi[i+1];
-//                                xi[i+1] = temp;
-//                            }
-//                        }
-//                    }
+//                     Code for bubble sort
+                    for(j=0;j<k-1;j++)
+                    {
+                        for(i=0;i<k-j-1;i++)
+                        {
+                            if(xi[i]>xi[i+1])
+                            {
+                                temp = xi[i];
+                                xi[i] = xi[i+1];
+                                xi[i+1] = temp;
+                            }
+                        }
+                    }
 
                     // code for printing the final line
                     for(i=0;i<k;i+=2)

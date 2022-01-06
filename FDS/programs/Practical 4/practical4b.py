@@ -48,21 +48,34 @@ def checkIfSorted():
                 return False
         return True
 
-def binarySearch(ele):
-    l = len(students)
-    m = l//2
-    if students[m] == ele:
-        printMsg("Element Found at location " + str(m+1), "SUCCESS")
-        return
-    
-    while m >= 0 and m < l:
-        if students[m] == ele:
-            printMsg("Element Found at location " + str(m+1), "SUCCESS")
-            return
-        if students[m] > ele:
-            m -= 1
-        else:
-            m += 1
+# def binarySearch(ele):
+#     l = len(students)
+#     m = l//2
+#     if students[m] == ele:
+#         printMsg("Element Found at location " + str(m+1), "SUCCESS")
+#         return
+#     f = 0
+#     while m >= f and m < l:
+#         if students[m] == ele:
+#             printMsg("Element Found at location " + str(m+1), "SUCCESS")
+#             return
+#         if students[m] > ele:
+#             l = m-1
+#         else:
+#             f = m + 1
+#         m = (f + l)//2
+#     printMsg("Element Not Found ", "ERROR")
+
+def binarySearch(i, j, inputList, key):
+    mid = (i+j) // 2
+    if inputList[mid] == key:
+        return mid
+    elif i >= j:
+        return -1
+    elif (key > inputList[mid]):
+        return binarySearch(mid+1, j, inputList, key)
+    elif (key < inputList[mid]):
+        return binarySearch(i, mid-1, inputList, key)
 
 def getFibonacciSeries(arrLen):
     series = []
@@ -105,7 +118,11 @@ while not isExit:
     choice = int(input())
     if choice == 1:
         rollNo = int(input("Enter Roll no to search:"))
-        binarySearch(rollNo)
+        result = binarySearch(0, len(students)-1, students, rollNo)
+        if result == -1:
+            printMsg("Element Not Found ", "ERROR")
+        else:
+            printMsg("Element Found at index " + str(result), "SUCCESS")
     elif choice == 2:
         rollNo = int(input("Enter Roll no to search:"))
         # sentinalLinearSearch(rollNo)
