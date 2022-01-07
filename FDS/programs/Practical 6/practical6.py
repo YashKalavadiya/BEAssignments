@@ -7,15 +7,13 @@ percentage = []
 def partition(low,high):
 	i = (low-1)
 	pivot = percentage[high]
-
 	for j in range(low,high):
 		if percentage[j]<=pivot:
 			i=i+1
 			percentage[i],percentage[j]=percentage[j], percentage[i]
-
 	percentage[i+1], percentage[high]=percentage[high],percentage[i+1]
-
 	return (i+1)
+
 def quickSort(l, r):
     if l <= r:
         pi = partition(l,r)
