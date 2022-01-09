@@ -43,16 +43,52 @@ public:
 		in>>c.img;
 		return in;
 	}
+
 };
-int main() {
+void printMenu() {
+	cout<<"\nMENU";
+	cout<<"\n1. Add complex";
+	cout<<"\n2. Multiply Complex";
+	cout<<"\n3. Display both Complex";
+	cout<<"\n4. Exit";
+}
+
+void execute(){
 	Complex c1, c2;
+	Complex mul, add;
+	cout<<"\nEnter Complex number 1:";
 	cin>>c1;
+	cout<<"\nEnter Complex number 2:";
 	cin>>c2;
-	Complex c3;
-	c3 = c1 + c2;
-	cout<<c1<<endl;
-	cout<<c2<<endl;
-	cout<<c3<<endl;
-	c3 = c1 * c2;
-	cout<<c3<<endl;
+	bool isExit = false;
+	while(!isExit){
+		printMenu();
+		cout<<"\nEnter your choice: ";
+		int ch;
+		cin>>ch;
+		switch(ch){
+			case 1:
+				add = c1 + c2;
+				cout<<"\nAddition: ";
+				cout<<add;
+				break;
+			case 2:
+				mul = c1*c2;
+				cout<<"\nMultiplication: ";
+				cout<<mul;
+				break;
+			case 3:
+				cout<<"\nComplex no 1: ";
+				cout<<c1;
+				cout<<"\nComplex no 2: ";
+				cout<<c2;
+				break;
+			case 4:
+				isExit = true;
+				break;
+		}
+	}
+}
+int main() {
+	execute();
 }

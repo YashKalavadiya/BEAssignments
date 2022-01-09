@@ -78,6 +78,12 @@ void MainWindow::BresenhamCircleAlgo(int r, int x1, int y1) {
 
 }
 
+//250,250,100 for outer circle
+//250,250,50 for inner circle
+//250,150,336,300 
+//336,300,163,300
+//163,300,250,150
+
 void MainWindow::paintEvent(QPaintEvent *event){
     QPainter painter(this);
     QPen linePen(Qt::red);
