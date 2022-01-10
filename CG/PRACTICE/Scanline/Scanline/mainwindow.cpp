@@ -88,7 +88,7 @@ void MainWindow::scanLine()
         if(dx == 0){
             m[i] = 0.0;
         }
-        else {
+        if((dy != 0.0) && (dx != 0.0)) {
             m[i] = dx/dy;
         }
     }
@@ -96,21 +96,31 @@ void MainWindow::scanLine()
     for (int y = ymin+1; y < ymax; y++) {
         int k = 0;
         for(int j = 0; j < lines.size(); j++) {
-            if(((lines[j].starty < y) && (lines[j].endy > y)) || ((lines[j].starty > y) && (lines[j].endy < y))){
+            if(((lines[j].starty <= y) && (lines[j].endy > y)) || ((lines[j].starty > y) && (lines[j].endy <= y))){
 
-                intersectionPoints[k] = lines[j].startx + (m[j] * (y-lines[j].starty));
+                intersectionPoints[k] = int(lines[j].startx + (m[j] * (y-lines[j].starty)));
                 std::cout<<intersectionPoints[k]<<std::endl;
                 k++;
             }
         }
 
-        std::sort(intersectionPoints, &intersectionPoints[k-1]);
+//        std::sort(intersectionPoints, &intersectionPoints[k-1]);
+
+        for(int j = 0; j < k-1; j++){
+            for(int x = 0; x < k-j-1; x++){
+                if(intersectionPoints[x] > intersectionPoints[x+1]){
+                    int temp = intersectionPoints[x];
+                    intersectionPoints[x] = intersectionPoints[x+1];
+                    intersectionPoints[x+1] = temp;
+                }
+            }
+        }
 
         for(int j = 0; j <= k-2; j+=2) {
             dda(intersectionPoints[j], y, intersectionPoints[j+1], y);
         }
     }
-    delete [] m;
+//    delete [] m;
 }
 
 
