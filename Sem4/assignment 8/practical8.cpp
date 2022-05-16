@@ -12,26 +12,16 @@ struct Node {
 };
 
 
-void Queue::printQueue() {
-    cout<<"\n=============================================\n";
-    for (int i = front; i <= rear; i++) {
-        Node *temp = queue[i];
-        cout<<"\t"<<temp->landmark;
-    }
-    cout<<"\n=============================================\n";
-
-}
 class Graph {
     Node *adjacencyList = NULL;
     int size;
     Stack *s;
-    Queue *q;
     public:
     Graph(int size) {
         this->size = size;
         adjacencyList = new Node[size];
         s = new Stack(size);
-        q = new Queue(size);
+        
     }
     void makeAllUnVisited(Node *current) {
         while(current != NULL) {
@@ -45,32 +35,9 @@ class Graph {
             current = current->next;
             if(!current->original->isVisited) {
                 current = current->original;
-		cout<<"\t"<<current->landmark;
                 s->push(current);
                 current->isVisited = true;
                 return;
-            }
-        }
-    }
-
-    void bfs() {
-        Node *current = adjacencyList;
-        q->enQueue(current);
-        current->isVisited = true;
-
-        cout<<"\n=============================================\n";
-
-        while (!q->isEmpty()) {
-            Node *popped = q->deQueue();
-            cout<<"\t"<<popped->landmark;
-
-            popped = popped->next;
-            while (popped != NULL) {
-                if(!popped->original->isVisited) {
-                    q->enQueue(popped->original);
-                    popped->original->isVisited = true;
-                }
-                popped = popped->next;
             }
         }
     }
@@ -84,7 +51,6 @@ class Graph {
             }
             if(!current->isVisited) {
                 s->push(current);
-		cout<<"\t"<<current->landmark;
                 current->isVisited = true;
             }
             bool isUpdated = false;
@@ -106,7 +72,7 @@ class Graph {
             Node *current = s->getTop();
             exploreAdjacents(current);
             current = s->pop();
-//            cout<<"\t"<<current->landmark;
+            cout<<"\t"<<current->landmark;
         }
         makeAllUnVisited(adjacencyList);
     }
@@ -168,25 +134,19 @@ class Graph {
             }
             l1Transport = l1Transport->next;
         }
-        while(l2Transport->next != NULL) {
-            if (l2Transport->landmark == landmark1) {
-                break;
-            }
-            l2Transport = l2Transport->next;
-        }
 
-        if(l1Transport->landmark == landmark2 and l2Transport->landmark == landmark1) {
+        if(l1Transport->landmark == landmark2) {
             cout<<"\n Edge Already exists";
             return;
         }
-        Node *l1Link = new Node, *l2Link = new Node;
+        Node *l1Link = new Node;
         l1Link->landmark = landmark2;
         l1Link->original = temp2;
-        l2Link->landmark = landmark1;
-        l2Link->original = temp1;
+        // l2Link->landmark = landmark1;
+        // l2Link->original = temp1;
 
         l1Transport->next = l1Link;
-        l2Transport->next = l2Link;
+        // l2Transport->next = l2Link;
     }
 
     void printGraph() {
@@ -208,12 +168,11 @@ class Graph {
 
     void printMenu() {
         cout<<"\n=============================================";
-        cout<<"\n1. DFS";
-        cout<<"\n2. BFS";
-        cout<<"\n3. Print Graph (in adjacency list)";
-        cout<<"\n4. Insert Node";
-        cout<<"\n5. Create Edge";
-        cout<<"\n6. Exit";
+        cout<<"\n1. Topological Sort";
+        cout<<"\n2. Print Graph (in adjacency list)";
+        cout<<"\n3. Insert Node";
+        cout<<"\n4. Create Edge";
+        cout<<"\n5. Exit";
         cout<<"\n==============================================";
     }
 
@@ -240,18 +199,15 @@ class Graph {
                     dfs();
                     break;
                 case 2:
-                    bfs();
-                    break;
-                case 3:
                     printGraph();
                     break;
-                case 4:
+                case 3:
                     insertNode();
                     break;
-                case 5:
+                case 4:
                     createEdge();
                     break;
-                case 6:
+                case 5:
                     isExit = true;
                     break;
                 default:

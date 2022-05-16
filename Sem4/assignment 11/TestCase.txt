@@ -1,0 +1,17 @@
+Enter Size of Min Heap
+10
+Enter 10 no of elements to sort using HEAPSORT
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+Unsorted Array :
+10 9 8 7 6 5 4 3 2 1
+Heap Sorted Array :
+1 2 3 4 5 6 7 8 9 10 
