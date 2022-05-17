@@ -30,19 +30,19 @@ class stack
 		
 };
 class Solution {
-  void findTopoSort(int node, int vis[], stack & st, int arr[][n]) {
+  void findTopoSort(int node, int vis[], stack & st, int **arr) {
     vis[node] = 1;
-    int i=arr[node];
+    int i=*arr[node];
     while(i){
-      if (!vis[arr[i]]) {
-        findTopoSort(arr[i], vis, st, arr);
+      if (!vis[*arr[i]]) {
+        findTopoSort(*arr[i], vis, st, arr);
       }
-      i=arr[node++];
+      i=*arr[node++];
     }
     st.push(node);
   }
   public:
-    int topoSort(int N, int arr[][n] ) {
+    int * topoSort(int N, int **arr ) {
       stack st;
       // vector < int > vis(N, 0);
       int visit[N];
@@ -81,9 +81,10 @@ cin>>N;
                 cout<<"\n Enter node:";
                 cin>>v[i];
             }
-  int adj[N][N];
+  int **adj = new int*[N];
     for(int i=0;i<N;i++)
     {
+      adj[i] = new int[N];
         for(int j=0;j<N;j++)
         {
             cout<<"\n Is "<<v[i]<<" to "<<v[j]<<" a connection(y/n):";
@@ -91,7 +92,7 @@ cin>>N;
                     if(direc=='y')
                     {
                         
-                        adj[i][j]=1;
+                        adj[i][j] = 1;
                     }
                     
         }
@@ -99,7 +100,7 @@ cin>>N;
   n=N;
 
   Solution obj;
-  int return1[N] = obj.topoSort(6, adj);
+  int *return1 = obj.topoSort(6, adj);
 
   cout << "Topological sort of the given graph is:" << endl;
   for (int i = 0; i < N; i++) {
