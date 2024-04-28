@@ -1,5 +1,0 @@
-var aa=sc.textFile("/home/yash/hdfsNscala/aa.txt")
-var bb=aa.flatMap(_.split(" "))
-var cc=bb.map((_,1))
-var dd=cc.reduceByKey(_+_)
-dd.saveAsTextFile("aaa")
